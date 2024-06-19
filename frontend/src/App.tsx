@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import AppNavbar from './components/Navbar';
 import Home from './pages/Home';
-import AddBook from './pages/AddBook';
+import AddBookForm from './components/AddBookForm';
+import EditBookForm from './components/EditBookForm';
 import NotFound from './pages/NotFound';
 
 const App: React.FC = () => {
@@ -13,7 +14,8 @@ const App: React.FC = () => {
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/add-book" element={<AddBook />} />
+          <Route path="/add-book" element={<AddBookForm />} />
+          <Route path="/edit-book/:id" element={<EditBookForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import BookList from '../components/BookList';
 import Filters from '../components/Filters';
 import SearchForm from '../components/SearchForm';
-import { Book as BookType } from '../types'; // Adjust import as per your setup
+import { Book as BookType } from '../types';
 
 const Home: React.FC = () => {
   const [books, setBooks] = useState<BookType[]>([]); // State for books list
@@ -76,6 +76,22 @@ const Home: React.FC = () => {
     }
   };
 
+  // Handle book deletion
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await fetch(`/api/books/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete book');
+      }
+      setBooks(books.filter((book) => book._id !== id));
+      setFilteredBooks(filteredBooks.filter((book) => book._id !== id));
+    } catch (error) {
+      console.error('Error deleting book:', error);
+    }
+  };
+
   return (
     <Container className="py-4">
       <Row>
@@ -84,7 +100,7 @@ const Home: React.FC = () => {
         </Col>
         <Col md={9}>
           <SearchForm onSearch={handleSearch} />
-          <BookList books={filteredBooks} />
+          <BookList books={filteredBooks} onDelete={handleDelete} />
         </Col>
       </Row>
     </Container>

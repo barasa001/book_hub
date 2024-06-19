@@ -1,12 +1,21 @@
+// src/components/Book.tsx
 import React from 'react';
-import { Card } from 'react-bootstrap';
-import { Book } from '../types'; // Adjust the path if necessary
+import { Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { Book as BookType } from '../types';
 
 interface Props {
-  book: Book;
+  book: BookType;
+  onDelete: (id: string) => void;
 }
 
-const BookComponent: React.FC<Props> = ({ book }) => {
+const Book: React.FC<Props> = ({ book, onDelete }) => {
+  const navigate = useNavigate();
+
+  const handleDelete = () => {
+    onDelete(book._id);
+  };
+
   return (
     <Card>
       <Card.Img variant="top" src={book.coverUrl} />
@@ -19,9 +28,11 @@ const BookComponent: React.FC<Props> = ({ book }) => {
           <br />
           <strong>Year:</strong> {book.year}
         </Card.Text>
+        <Button variant="primary" onClick={() => navigate(`/edit-book/${book._id}`)}>Edit</Button>
+        <Button variant="danger" onClick={handleDelete}>Delete</Button>
       </Card.Body>
     </Card>
   );
 };
 
-export default BookComponent;
+export default Book;

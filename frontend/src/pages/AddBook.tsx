@@ -1,5 +1,3 @@
-// src/pages/AddBook.tsx
-
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import AddBookForm from '../components/AddBookForm';
