@@ -37,7 +37,7 @@ const EditBookForm: React.FC = () => {
     const updatedBook = { title, author, genre, year: Number(year), coverUrl };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/books/${id}`, { // Update URL
+      const response = await fetch(`http://localhost:5000/api/books/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

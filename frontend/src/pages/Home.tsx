@@ -79,7 +79,7 @@ const Home: React.FC = () => {
   // Handle book deletion
   const handleDelete = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/books/${id}`, { // Update URL
+      const response = await fetch(`http://localhost:5000/api/books/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
