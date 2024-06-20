@@ -17,7 +17,7 @@ const EditBookForm: React.FC = () => {
 
   const fetchBook = async () => {
     try {
-      const response = await fetch(`/api/books/${id}`);
+      const response = await fetch(`http://localhost:5000/api/books/${id}`); // Update URL
       if (!response.ok) {
         throw new Error('Failed to fetch book');
       }
@@ -37,7 +37,7 @@ const EditBookForm: React.FC = () => {
     const updatedBook = { title, author, genre, year: Number(year), coverUrl };
 
     try {
-      const response = await fetch(`/api/books/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/books/${id}`, { // Update URL
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -1,4 +1,3 @@
-// src/components/AddBookForm.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
@@ -16,7 +15,7 @@ const AddBookForm: React.FC = () => {
     const newBook = { title, author, genre, year: Number(year), coverUrl };
 
     try {
-      const response = await fetch('/api/books', {
+      const response = await fetch('http://localhost:5000/api/books', { // Update URL
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

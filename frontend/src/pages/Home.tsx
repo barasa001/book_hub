@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   // Fetch books from API
   const fetchBooks = async () => {
     try {
-      const response = await fetch('/api/books'); // Adjust URL as per your backend setup
+      const response = await fetch('http://localhost:5000/api/books'); // Update URL
       if (!response.ok) {
         throw new Error('Failed to fetch books');
       }
@@ -79,7 +79,7 @@ const Home: React.FC = () => {
   // Handle book deletion
   const handleDelete = async (id: string) => {
     try {
-      const response = await fetch(`/api/books/${id}`, {
+      const response = await fetch(`http://localhost:5000/api/books/${id}`, { // Update URL
         method: 'DELETE',
       });
       if (!response.ok) {

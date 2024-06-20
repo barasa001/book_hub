@@ -6,7 +6,7 @@ const AppNavbar: React.FC = () => {
   return (
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand as={Link} to="/">
-        Book Hub
+        Seth's Book Hub
       </Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link as={Link} to="/">
